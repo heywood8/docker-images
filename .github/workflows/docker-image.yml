@@ -6,7 +6,7 @@ on:
       - 'main'
 
 jobs:
-  docker:
+  mqttx-cli-docker-image:
     runs-on: ubuntu-latest
     steps:
       -
@@ -25,6 +25,7 @@ jobs:
         name: Build and push
         uses: docker/build-push-action@v4
         with:
-          context: ./mqttx
+          context: .
+          file: mqttx-cli/Dockerfile.amd64
           push: true
-          tags: heywood8/mqttx:v1.9.4
+          tags: heywood8/mqttx-cli:v1.9.4-amd64
