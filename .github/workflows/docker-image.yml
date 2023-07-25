@@ -27,4 +27,4 @@ jobs:
         with:
           context: ./mqttx
           push: true
-          tags: heywood8/mqttx:latest
+          tags: heywood8/mqttx:v1.9.4
