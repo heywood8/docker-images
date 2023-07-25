@@ -26,6 +26,6 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           context: .
-          file: mqttx-cli/Dockerfile.amd64
+          file: docker-images/mqttx-cli/Dockerfile.amd64
           push: true
           tags: heywood8/mqttx-cli:v1.9.4-amd64
