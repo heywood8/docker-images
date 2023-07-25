@@ -6,7 +6,7 @@ on:
       - 'main'
 
 jobs:
-  mqttx-cli-docker-image:
+  mqttest-docker-image:
     runs-on: ubuntu-latest
     steps:
       -
@@ -30,4 +30,4 @@ jobs:
           context: .
           file: mqttx-cli/Dockerfile.amd64
           push: true
-          tags: heywood8/mqttx-cli:v1.9.4-amd64
+          tags: heywood8/mqttest:v0.1.0
