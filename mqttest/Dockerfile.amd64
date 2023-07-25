@@ -1,3 +1,0 @@
-FROM emqx/mqttx-cli
-RUN apk add bash
-COPY mqttx-cli/mqttest /usr/bin/mqttest

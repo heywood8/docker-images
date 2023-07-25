@@ -28,6 +28,6 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           context: .
-          file: mqttest/Dockerfile.amd64
+          file: Dockerfile
           push: true
           tags: heywood8/mqttest:v0.1.0
