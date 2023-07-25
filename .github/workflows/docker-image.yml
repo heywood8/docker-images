@@ -21,13 +21,13 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-      - name: check
-        run: ls -la && pwd
+      - name: Checkout
+        uses: actions/checkout@v3
       -
         name: Build and push
         uses: docker/build-push-action@v4
         with:
           context: .
-          file: docker-images/mqttx-cli/Dockerfile.amd64
+          file: mqttx-cli/Dockerfile.amd64
           push: true
           tags: heywood8/mqttx-cli:v1.9.4-amd64
