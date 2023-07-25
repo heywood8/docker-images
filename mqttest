@@ -6,7 +6,7 @@ if [[ $# -eq 0 ]] ; then
     echo '```'
     echo 'pub;my-mqtt-host.local.reksoft.ru;1883;anytopic;testtest;wrongpass;0'
     echo 'sub;my-mqtt-host.local;1883;anytopic;testtest;testtest;1'
-    echo '```
+    echo '```'
     exit 1
 fi
 
