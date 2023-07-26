@@ -1,0 +1,2 @@
+1;pub;my-mqtt-host.local.reksoft.ru;1883;anytopic;testtest;wrongpass;2
+0;sub;my-mqtt-host.local;1883;anytopic;testtest;testtest;2

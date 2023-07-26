@@ -4,10 +4,7 @@ if [[ $# -eq 0 ]] ; then
     echo 'Test data file not found. Run "mqttest /path/to/testfile/"'
     echo 'Test data file example:'
     echo '<expected result(1=success,0=error)>;<action>;<host>;<port>;<topic>;<user>;<password>;<qos>;'
-    echo '```'
-    echo '1;pub;my-mqtt-host.local.reksoft.ru;1883;anytopic;testtest;wrongpass;2'
-    echo '0;sub;my-mqtt-host.local;1883;anytopic;testtest;testtest;2'
-    echo '```'
+    cat examples/test-data
     exit 1
 fi
 
