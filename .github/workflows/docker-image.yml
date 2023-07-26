@@ -30,7 +30,7 @@ jobs:
           context: .
           file: Dockerfile
           push: true
-          tags: heywood8/mqttest:v0.2.4
+          tags: heywood8/mqttest:v0.2.5
       -
         name: Build and push
         uses: docker/build-push-action@v4
