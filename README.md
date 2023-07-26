@@ -4,7 +4,7 @@
 
 ## Usage
 
-* Prepare test-data file in this format ([example](examples/test-data.csv):
+* Prepare test-data file in this format ([example](examples/test-data.csv)):
 
 `<expected result(1=success,0=error)>;<action>;<host>;<port>;<topic>;<user>;<password>;<qos>;`
 
