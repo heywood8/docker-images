@@ -3,9 +3,10 @@
 if [[ $# -eq 0 ]] ; then
     echo 'Test data file not found. Run "mqttest /path/to/testfile/"'
     echo 'Test data file example:'
+    echo '<expected result(1=success,0=error)>;<action>;<host>;<port>;<topic>;<user>;<password>;<qos>;'
     echo '```'
-    echo 'pub;my-mqtt-host.local.reksoft.ru;1883;anytopic;testtest;wrongpass;0'
-    echo 'sub;my-mqtt-host.local;1883;anytopic;testtest;testtest;1'
+    echo '1;pub;my-mqtt-host.local.reksoft.ru;1883;anytopic;testtest;wrongpass;2'
+    echo '0;sub;my-mqtt-host.local;1883;anytopic;testtest;testtest;2'
     echo '```'
     exit 1
 fi
@@ -22,14 +23,15 @@ file=$(cat "$testdata")
 
 for line in ${file[@]}
 do
-    action=$(echo $line | cut -d ";" -f 1)
-    host=$(echo $line | cut -d ";" -f 2)
-    port=$(echo $line | cut -d ";" -f 3)
-    topic=$(echo $line | cut -d ";" -f 4)
-    user=$(echo $line | cut -d ";" -f 5)
-    password=$(echo $line | cut -d ";" -f 6)
-    expected=$(echo $line | cut -d ";" -f 7)
-    command="mqttx $action -h $host -p $port -t $topic -u $user -P $password "
+    expected=$(echo $line | cut -d ";" -f 1)
+    action=$(echo $line | cut -d ";" -f 2)
+    host=$(echo $line | cut -d ";" -f 3)
+    port=$(echo $line | cut -d ";" -f 4)
+    topic=$(echo $line | cut -d ";" -f 5)
+    user=$(echo $line | cut -d ";" -f 6)
+    password=$(echo $line | cut -d ";" -f 7)
+    qos=$(echo $line | cut -d ";" -f 8)
+    command="mqttx $action -h $host -p $port -t $topic -u $user -P $password -q $qos"
     echo $command
     echo "Expected result: $expected"
     $command > /tmp/mqttx.log
