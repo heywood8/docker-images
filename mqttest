@@ -4,13 +4,13 @@ if [[ $# -eq 0 ]] ; then
     echo 'Test data file not found. Run "mqttest /path/to/testfile/"'
     echo 'Test data file example:'
     echo '<expected result(1=success,0=error)>;<action>;<host>;<port>;<topic>;<user>;<password>;<qos>;'
-    cat examples/test-data
+    cat examples/test-data.csv
     exit 1
 fi
 
 export testdata=$1
 echo "Using test-data $testdata:"
-cat $testdata
+cat "$testdata"
 
 echo ""
 echo "Starting test execution..."
@@ -18,21 +18,21 @@ echo ""
 
 file=$(cat "$testdata")
 
-for line in ${file[@]}
+for line in "${file[@]}"
 do
-    expected=$(echo $line | cut -d ";" -f 1)
-    action=$(echo $line | cut -d ";" -f 2)
-    host=$(echo $line | cut -d ";" -f 3)
-    port=$(echo $line | cut -d ";" -f 4)
-    topic=$(echo $line | cut -d ";" -f 5)
-    user=$(echo $line | cut -d ";" -f 6)
-    password=$(echo $line | cut -d ";" -f 7)
-    qos=$(echo $line | cut -d ";" -f 8)
+    expected=$(echo "$line" | cut -d ";" -f 1)
+    action=$(echo "$line" | cut -d ";" -f 2)
+    host=$(echo "$line" | cut -d ";" -f 3)
+    port=$(echo "$line" | cut -d ";" -f 4)
+    topic=$(echo "$line" | cut -d ";" -f 5)
+    user=$(echo "$line" | cut -d ";" -f 6)
+    password=$(echo "$line" | cut -d ";" -f 7)
+    qos=$(echo "$line" | cut -d ";" -f 8)
     command="timeout 3 mqttx $action -h $host -p $port -t $topic -u $user -P $password -q $qos"
-    echo $command
+    echo "$command"
     echo "Expected result: $expected"
     $command > /tmp/mqttx.log
-    cat /tmp/mqttx.log | grep "Error" >> /dev/null
+    grep "Error" /tmp/mqttx.log >> /dev/null
     result=$?
     echo "Result: $result"
     if [ "$expected" != "$result" ]; then
