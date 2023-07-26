@@ -18,7 +18,7 @@ echo ""
 
 file=$(cat "$testdata")
 
-for line in "${file[@]}"
+for line in ${file[@]}
 do
     expected=$(echo "$line" | cut -d ";" -f 1)
     action=$(echo "$line" | cut -d ";" -f 2)
