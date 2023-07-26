@@ -28,7 +28,7 @@ do
     user=$(echo $line | cut -d ";" -f 6)
     password=$(echo $line | cut -d ";" -f 7)
     qos=$(echo $line | cut -d ";" -f 8)
-    command="mqttx $action -h $host -p $port -t $topic -u $user -P $password -q $qos"
+    command="timeout 3 mqttx $action -h $host -p $port -t $topic -u $user -P $password -q $qos"
     echo $command
     echo "Expected result: $expected"
     $command > /tmp/mqttx.log
